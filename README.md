@@ -13,7 +13,7 @@ Une application d'assistant IA spécialisé en santé au Bénin utilisant LangCh
 
 1. Clonez ce dépôt :
 ```bash
-git clone [URL_DU_REPO]
+git clone git@github.com:dona-eric/Assistant-Agent-IA-Medical-Benin.git
 cd [NOM_DU_REPO]
 ```
 
@@ -81,3 +81,7 @@ Les données des hôpitaux sont stockées dans `benin_healthcare_data.py`. N'hé
 ## Licence
 
 MIT 
+
+## Auteur 
+Eric KOULODJI D.
+**Data Scientist, Developpeur Django & Machine Learning Specialist**
