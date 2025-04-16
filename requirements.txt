@@ -1,19 +1,19 @@
 # API et Web
-fastapi==0.109.2
-uvicorn==0.27.1
-python-dotenv==1.0.1
-pydantic==2.6.1
-python-jose==3.3.0
-passlib==1.7.4
-python-multipart==0.0.9
+fastapi>=0.109.2
+uvicorn>=0.27.1
+python-dotenv>=1.0.1
+pydantic>=2.6.1
+python-jose>=3.3.0
+passlib>=1.7.4
+python-multipart>=0.0.9
 httpx==0.26.0
 
 # Base de données
-sqlalchemy==2.0.27
-psycopg2-binary==2.9.9
+sqlalchemy>=2.0.27
+psycopg2-binary>=2.9.9
 pymongo==4.6.1
 redis==5.0.1
-alembic==1.13.1
+alembic>=1.13.1
 
 # IA et NLP
 langchain==0.1.4
@@ -39,4 +39,7 @@ pytest-cov==4.1.0
 
 # Documentation
 mkdocs==1.5.3
-mkdocs-material==9.5.3 
+mkdocs-material==9.5.3
+
+# Added from the code block
+mistralai>=0.0.12 
