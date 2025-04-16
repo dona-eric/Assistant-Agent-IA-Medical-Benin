@@ -1,0 +1,74 @@
+{
+  "labels": [
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Quelque chose ne fonctionne pas comme prévu"
+    },
+    {
+      "name": "enhancement",
+      "color": "a2eeef",
+      "description": "Nouvelle fonctionnalité ou amélioration"
+    },
+    {
+      "name": "documentation",
+      "color": "0075ca",
+      "description": "Amélioration ou ajout de documentation"
+    },
+    {
+      "name": "good first issue",
+      "color": "7057ff",
+      "description": "Bon point de départ pour les nouveaux contributeurs"
+    },
+    {
+      "name": "help wanted",
+      "color": "008672",
+      "description": "Besoin d'aide supplémentaire"
+    },
+    {
+      "name": "priority: high",
+      "color": "ff0000",
+      "description": "Priorité haute"
+    },
+    {
+      "name": "priority: medium",
+      "color": "ffa500",
+      "description": "Priorité moyenne"
+    },
+    {
+      "name": "priority: low",
+      "color": "00ff00",
+      "description": "Priorité basse"
+    },
+    {
+      "name": "security",
+      "color": "ff0000",
+      "description": "Problème de sécurité"
+    },
+    {
+      "name": "ui/ux",
+      "color": "ffcc00",
+      "description": "Interface utilisateur ou expérience utilisateur"
+    },
+    {
+      "name": "backend",
+      "color": "00ccff",
+      "description": "Problème ou amélioration backend"
+    },
+    {
+      "name": "frontend",
+      "color": "00ffcc",
+      "description": "Problème ou amélioration frontend"
+    },
+    {
+      "name": "database",
+      "color": "cc00ff",
+      "description": "Problème ou amélioration lié à la base de données"
+    },
+    {
+      "name": "ai",
+      "color": "ff00cc",
+      "description": "Problème ou amélioration lié à l'IA"
+    }
+  ]
+} 
