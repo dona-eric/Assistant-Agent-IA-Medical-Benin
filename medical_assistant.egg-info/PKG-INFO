@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: medical_assistant
+Version: 0.1.0
+License-File: LICENSE
+Requires-Dist: fastapi>=0.109.2
+Requires-Dist: uvicorn>=0.27.1
+Requires-Dist: sqlalchemy>=2.0.27
+Requires-Dist: alembic>=1.13.1
+Requires-Dist: pydantic>=2.6.1
+Requires-Dist: python-jose>=3.3.0
+Requires-Dist: passlib>=1.7.4
+Requires-Dist: python-multipart>=0.0.9
+Requires-Dist: psycopg2-binary>=2.9.9
+Requires-Dist: python-dotenv>=1.0.1
+Dynamic: license-file
+Dynamic: requires-dist

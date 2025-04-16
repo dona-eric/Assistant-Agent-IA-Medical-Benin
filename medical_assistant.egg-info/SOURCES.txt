@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+medical_assistant.egg-info/PKG-INFO
+medical_assistant.egg-info/SOURCES.txt
+medical_assistant.egg-info/dependency_links.txt
+medical_assistant.egg-info/requires.txt
+medical_assistant.egg-info/top_level.txt
