@@ -42,5 +42,5 @@ mkdocs==1.5.3
 mkdocs-material==9.5.3
 
 # Added from the code block
- mistralai>=0.1.8
+mistralai
 guardrails>=0.16.0

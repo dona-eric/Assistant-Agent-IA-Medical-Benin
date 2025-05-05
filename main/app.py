@@ -1,6 +1,8 @@
 import streamlit as st
 import folium, os,sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+#from src.agent.agent import MedicalAgent
+from src.agent.medical_agent import SimpleMedicalAgent
 from src.agent.agent import MedicalAgent
 from healthcare_centers import HealthcareCenters
 from streamlit_folium import folium_static
@@ -27,6 +29,9 @@ def get_medical_agent():
     return MedicalAgent()
 
 @st.cache_resource
+def get_simple_medical_agent():
+    return SimpleMedicalAgent()
+@st.cache_resource
 def get_healthcare_centers():
     return HealthcareCenters()
 
@@ -49,6 +54,7 @@ with tab1:
             with st.spinner("Analyse en cours..."):
                 try:
                     agent = get_medical_agent()
+                    # Obtenir la réponse de l'agent
                     response = agent.chat(question)
                     st.markdown("### Réponse :")
                     st.write(response)

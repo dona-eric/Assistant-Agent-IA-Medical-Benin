@@ -8,7 +8,7 @@ load_dotenv()
 class AgentConfig(BaseSettings):
     # Configuration de l'API Mistral
     MISTRAL_API_KEY: str = os.getenv("MISTRAL_API_KEY", "")
-    MISTRAL_MODEL: str = os.getenv("MISTRAL_MODEL", "mistral-medium")
+    MISTRAL_MODEL: str = os.getenv("MISTRAL_MODEL", "mistral-small-latest")
     
     # Configuration du système
     SYSTEM_PROMPT: str = """Tu es un assistant médical IA spécialisé dans le diagnostic et les conseils médicaux.
