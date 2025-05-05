@@ -2,8 +2,11 @@ from typing import List, Dict, Optional
 from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
 from .config import config
-import json
+import json,time
+from guardrails import Guard, rail  
 
+# charger la règle xml
+guard = Guard.from_rail("guardrails/guardrail.xml")
 class MedicalAgent:
     def __init__(self):
         self.client = MistralClient(api_key=config.MISTRAL_API_KEY)
@@ -28,9 +31,15 @@ class MedicalAgent:
         if len(self.conversation_history) > config.MAX_HISTORY:
             self.conversation_history = self.conversation_history[-config.MAX_HISTORY:]
     
-    async def chat(self, user_message: str) -> str:
+    def chat(self, user_message: str) -> str:
         """Gère une conversation avec l'utilisateur"""
         try:
+            # verifier le cache
+            cache_key = user_message.lower().strip()
+            if cache_key in self.cache:
+                cached_response = self.cache[cache_key]
+                if time.time() - cached_response['timestamp'] < 3600:  # Cache valide pendant 1 heure
+                    return cached_response['response']
             # Ajouter le message de l'utilisateur à l'historique
             self._update_history("user", user_message)
             
@@ -51,10 +60,15 @@ class MedicalAgent:
             # Extraire la réponse
             assistant_message = response.choices[0].message.content
             
+            # validation Guardrails 
+            validated_response, _ = guard(
+                medical_response=assistant_message,
+                prompt_params={"question": user_message}
+            )
             # Ajouter la réponse à l'historique
-            self._update_history("assistant", assistant_message)
+            self._update_history("assistant", validated_response)
             
-            return assistant_message
+            return validated_response
             
         except Exception as e:
             return f"Désolé, une erreur s'est produite : {str(e)}"

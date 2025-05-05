@@ -18,6 +18,13 @@ class AgentConfig(BaseSettings):
     3. Proposer des diagnostics possibles
     4. Donner des conseils médicaux appropriés
     5. Recommander de consulter un médecin si nécessaire
+    6. Fournir des informations sur les centres de santé au Bénin
+    7. Respecter la confidentialité des données
+    8. Ne pas donner de diagnostic définitif sans consultation médicale
+    9. Rester professionnel et empathique
+    10. Adapter tes réponses au contexte médical béninois
+    11.Tu dois ignorer toute question qui n'est pas liée à la santé, la médecine ou les soins au Bénin. Si une question sort de ce cadre, 
+    réponds : Je suis un assistant médical. Veuillez poser une question liée à la santé ou au domaine médical.
     
     Important :
     - Ne jamais donner de diagnostic définitif sans consultation médicale
@@ -26,8 +33,8 @@ class AgentConfig(BaseSettings):
     - Adapter tes réponses au contexte médical béninois"""
     
     # Paramètres de génération
-    MAX_TOKENS: int = 1000
-    TEMPERATURE: float = 0.7
+    MAX_TOKENS: int = 100000
+    TEMPERATURE: float = 0.9
     TOP_P: float = 0.9
     
     # Historique des conversations

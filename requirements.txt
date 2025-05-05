@@ -6,7 +6,7 @@ pydantic>=2.6.1
 python-jose>=3.3.0
 passlib>=1.7.4
 python-multipart>=0.0.9
-httpx==0.26.0
+httpx>=0.25.0
 
 # Base de données
 sqlalchemy>=2.0.27
@@ -42,4 +42,5 @@ mkdocs==1.5.3
 mkdocs-material==9.5.3
 
 # Added from the code block
-mistralai>=0.0.12 
+ mistralai>=0.1.8
+guardrails>=0.16.0

@@ -1,0 +1,19 @@
+<guardrails>
+  <output>
+    <string name="medical_response" description="Réponse strictement liée à la santé" />
+  </output>
+  <validators>
+    <python code="
+    keywords = ['santé', 'maladie', 'traitement', 'symptôme', 'médecin', 'hopital', 'urgence', 'diagnostic', 'médicament', 'consultation',
+    'chirurgie', 'prévention', 'vaccin', 'thérapie', 'réhabilitation', 'symptômes', 'pathologie', 'urgence médicale', 'soins médicaux',
+    'maladie chronique', 'urgence sanitaire', 'médecin généraliste', 'spécialiste médical', 'hôpital public', 'hôpital privé', 'urgence vitale',
+    'urgence pédiatrique', 'urgence gynécologique', 'urgence psychiatrique', 'urgence neurologique', 'urgence cardiologique', 'urgence respiratoire',
+    'urgence digestive', 'urgence orthopédique', 'urgence urologique', 'urgence dermatologique', 'urgence ophtalmologique', 'urgence ORL',
+    'urgence stomatologique', 'urgence obstétricale', 'urgence pédiatrique', 'urgence gériatrique', 'urgence toxicologique', 'urgence allergologique',
+    'urgence infectieuse', 'urgence endocrinienne', 'urgence métabolique', 'urgence hématologique', 'urgence oncologique', 'urgence rhumatologique',
+    'urgence néphrologique', 'urgence gastro-entérologique', 'urgence pneumologique', 'urgence cardiologique', 'urgence vasculaire', 'urgence neurologique',
+    'urgence psychiatrique', 'urgence pédiatrique', 'urgence obstétricale', 'urgence gynécologique', 'urgence dermatologique', 'urgence ophtalmologique']
+if not any(word in medical_response.lower() for word in keywords):
+    raise Exception('La réponse ne semble pas être liée au domaine médical.')"/>
+  </validators>
+</guardrails>

@@ -1,8 +1,11 @@
 import streamlit as st
-from medical_agent import MedicalAgent
+import folium, os,sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.agent.agent import MedicalAgent
 from healthcare_centers import HealthcareCenters
-import folium
 from streamlit_folium import folium_static
+
+
 
 # Configuration de la page
 st.set_page_config(
@@ -28,14 +31,14 @@ def get_healthcare_centers():
     return HealthcareCenters()
 
 # Création des onglets
-tab1, tab2 = st.tabs(["Assistant Médical", "Centres de Santé"])
+tab1, tab2, tab3= st.tabs(["Assistant Médical", "Centres de Santé", "Prendre Rendez-vous"])
 
 with tab1:
     st.header("Assistant Médical")
     
     # Zone de texte pour la question
     question = st.text_area(
-        "Posez votre question sur la santé",
+        "Posez votre question sur la santé :",
         placeholder="Exemple: Quels sont les symptômes du paludisme ? Comment prévenir le paludisme ?",
         height=100
     )
@@ -46,7 +49,7 @@ with tab1:
             with st.spinner("Analyse en cours..."):
                 try:
                     agent = get_medical_agent()
-                    response = agent.get_response(question)
+                    response = agent.chat(question)
                     st.markdown("### Réponse :")
                     st.write(response)
                     
@@ -72,7 +75,7 @@ with tab2:
     with col2:
         center_type = st.selectbox(
             "Type d'établissement",
-            ["", "Public", "Privé"]
+            ["Hopital", "Clinique", "Pharmarcie", "Centre de santé", "Laboratoire", "Cabinet Médical"],
         )
         
     with col3:

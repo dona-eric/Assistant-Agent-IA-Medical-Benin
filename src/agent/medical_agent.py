@@ -1,14 +1,11 @@
-import os
+import os, sys, re,json, requests, time
 from dotenv import load_dotenv
-import requests
-import json
 from typing import Dict, Optional
-import time
 
 # Charger les variables d'environnement
 load_dotenv()
 
-class MedicalAgent:
+class SimpleMedicalAgent:
     def __init__(self):
         self.api_key = os.getenv("MISTRAL_API_KEY")
         self.api_url = "https://api.mistral.ai/v1/chat/completions"
@@ -23,8 +20,10 @@ class MedicalAgent:
                 return cached_response['response']
         
         # Préparer le prompt
-        prompt = f"""Tu es un assistant médical professionnel au Bénin avec une expertise approfondie en santé publique.
+        system_prompt = f"""Tu es un assistant médical professionnel au Bénin avec une expertise approfondie en santé publique.
 Ta mission est de répondre aux questions de santé de manière claire, précise et adaptée au contexte béninois.
+Tu dois ignorer toute question qui n'est pas liée à la santé, la médecine ou les soins au Bénin. Si une question sort de ce cadre, réponds : 
+"Je suis un assistant médical. Veuillez poser une question liée à la santé ou au domaine médical."
 
 Question: {question}
 
@@ -43,7 +42,7 @@ Pour les questions sur les traitements :
 Réponds de manière professionnelle et bien structurée."""
         
         # Obtenir la réponse de l'API
-        response = self._query_api(prompt)
+        response = self._query_api(system_prompt,question)
         
         if response:
             # Mettre en cache
@@ -58,7 +57,7 @@ Réponds de manière professionnelle et bien structurée."""
             Veuillez réessayer plus tard ou consulter un professionnel de santé.
             """
     
-    def _query_api(self, prompt: str) -> Optional[str]:
+    def _query_api(self, system_prompt: str, user_input:str) -> Optional[str]:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
@@ -71,14 +70,10 @@ Réponds de manière professionnelle et bien structurée."""
                 json={
                     "model": "mistral-tiny",
                     "messages": [
-                        {
-                            "role": "system",
-                            "content": "Tu es un assistant médical professionnel au Bénin avec une expertise approfondie en santé publique."
-                        },
-                        {
-                            "role": "user",
-                            "content": prompt
-                        }
+                        {"role": "system", 
+                         "content": system_prompt},
+                        {"role": "user",
+                         "content": user_input}
                     ],
                     "temperature": 0.7,
                     "max_tokens": 1000
@@ -97,7 +92,7 @@ Réponds de manière professionnelle et bien structurée."""
 
 # Test de l'agent
 if __name__ == "__main__":
-    agent = MedicalAgent()
+    agent = SimpleMedicalAgent()
     test_question = "Quels sont les symptômes du paludisme et comment le prévenir au Bénin ?"
     response = agent.get_response(test_question)
     print("\nQuestion:", test_question)
