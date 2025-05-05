@@ -68,7 +68,8 @@ with tab1:
                     st.error(f"Une erreur est survenue : {str(e)}")
         else:
             st.warning("Veuillez poser une question.")
-    
+            
+# Tab pour les centres de santé
 with tab2:
     st.header("Recherche de Centres de Santé")
     

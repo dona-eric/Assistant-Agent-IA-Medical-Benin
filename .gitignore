@@ -14,14 +14,12 @@ env/
 *.hypothesis/
 *.tox/
 *.coverage.*
-.env/
+.env
 __pycache__/
 *.DS_Store
 *.vscode/
 *.idea/
-*.sublime-project
-*.sublime-workspace
-*.sublime-settings
+
 *.iml
 *.swp
 *.swo
